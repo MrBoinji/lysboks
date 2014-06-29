@@ -3,8 +3,13 @@ module.exports = (grunt) ->
 	#Project configuration
 	grunt.initConfig
 		pkg: grunt.file.readJSON 'package.json'
+
+		clean:
+			default: ['./build/*']
+
+
 		coffee:
-			build:
+			default:
 				expand: true
 				cwd: 'src'
 				src: ['**/*.coffee']
@@ -18,13 +23,14 @@ module.exports = (grunt) ->
 #				dest: 'build'
 #				expand: true
 
+
 		uglify:
 			options:
 				banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
 
-			build:
-				src: 'lib/<%= pkg.name %>.js'
-				dest: 'lib/<%= pkg.name %>.min.js'
+			default:
+				src: 'build/<%= pkg.name %>.js'
+				dest: 'build/<%= pkg.name %>.min.js'
 
 		watch:
 			coffee:
@@ -35,7 +41,12 @@ module.exports = (grunt) ->
 	grunt.loadNpmTasks 'grunt-contrib-coffee'
 	grunt.loadNpmTasks 'grunt-contrib-uglify'
 	grunt.loadNpmTasks 'grunt-contrib-watch'
+	grunt.loadNpmTasks 'grunt-contrib-clean'
 
 	# Default task.
-	grunt.registerTask 'build', ['coffee']
-	grunt.registerTask 'default', ['build']
+	grunt.registerTask 'fastbuild' , ['coffee']
+	grunt.registerTask 'build'     , ['clean','coffee']
+	grunt.registerTask 'default'   , ['build', 'lysboks']
+	grunt.registerTask 'lysboks'   , 'Run the lysboks server', () ->
+		require './build/lysboks.js'
+
