@@ -23,6 +23,10 @@ module.exports = (grunt) ->
 				dest: 'build'
 				expand: true
 
+		execute:
+			target:
+				src: ['build/lysboks.js']
+
 
 		uglify:
 			options:
@@ -43,11 +47,11 @@ module.exports = (grunt) ->
 	grunt.loadNpmTasks 'grunt-contrib-copy'
 	grunt.loadNpmTasks 'grunt-contrib-uglify'
 	grunt.loadNpmTasks 'grunt-contrib-watch'
+	grunt.loadNpmTasks 'grunt-execute';
 
 	# Default task.
 	grunt.registerTask 'fastbuild' , ['coffee', 'copy']
 	grunt.registerTask 'build'     , ['clean','coffee', 'copy']
 	grunt.registerTask 'default'   , ['build']
-	grunt.registerTask 'lysboks'   , 'Run the lysboks server', () ->
-		require './build/lysboks.js'
+	grunt.registerTask 'lysboks'   , ['execute']
 
