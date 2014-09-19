@@ -9,6 +9,7 @@
     "express": "= 4.4.4",
     "grunt-execute": "^0.2.2",
     "mocha": "= 1.20.1",
+    "mongoose": "^3.8.16",
     "underscore": "^1.6.0"
   },
   "engine": "node 0.10.29",
