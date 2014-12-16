@@ -1,0 +1,139 @@
+Beginning to run lysboks in dev mode . . .
+Lysboks was started on 0.0.0.0 and is listening on port 7777
+Beginning to run lysboks in dev mode . . .
+Lysboks was started on 0.0.0.0 and is listening on port 7777
+Beginning to run lysboks in dev mode . . .
+Lysboks was started on 0.0.0.0 and is listening on port 7777
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Beginning to run lysboks in dev mode . . .
+Lysboks was started on 0.0.0.0 and is listening on port 7777
+
+
+
+Beginning to run lysboks in dev mode . . .
+Lysboks was started on 0.0.0.0 and is listening on port 7777
+
+
+
+Beginning to run lysboks in dev mode . . .
+Lysboks was started on 0.0.0.0 and is listening on port 7777
+
+
+
+Beginning to run lysboks in dev mode . . .
+Lysboks was started on 0.0.0.0 and is listening on port 7777
+
+
+
+
+
+
+Beginning to run lysboks in dev mode . . .
+Lysboks was started on 0.0.0.0 and is listening on port 7777
+Beginning to run lysboks in dev mode . . .
+
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module './controllers/backend_controller'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/Users/bgroener/Development/Projects/Licht-Blau/lysboks/build/core/routes.js:8:13)
+    at Object.<anonymous> (/Users/bgroener/Development/Projects/Licht-Blau/lysboks/build/core/routes.js:27:4)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+error: Forever detected script exited with code: 8
+error: Forever restarting script for 1 time
+Beginning to run lysboks in dev mode . . .
+
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module './controllers/backend_controller'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/Users/bgroener/Development/Projects/Licht-Blau/lysboks/build/core/routes.js:8:13)
+    at Object.<anonymous> (/Users/bgroener/Development/Projects/Licht-Blau/lysboks/build/core/routes.js:27:4)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+error: Forever detected script exited with code: 8
+error: Forever restarting script for 2 time
+Beginning to run lysboks in dev mode . . .
+
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module './controllers/backend_controller'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/Users/bgroener/Development/Projects/Licht-Blau/lysboks/build/core/routes.js:8:13)
+    at Object.<anonymous> (/Users/bgroener/Development/Projects/Licht-Blau/lysboks/build/core/routes.js:27:4)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+error: Forever detected script exited with code: 8
+
+/Users/bgroener/Development/Projects/Licht-Blau/lysboks/node_modules/grunt-forever/node_modules/forever/node_modules/forever-monitor/node_modules/broadway/node_modules/eventemitter2/lib/eventemitter2.js:290
+          throw arguments[1]; // Unhandled 'error' event
+                         ^
+Error: Cannot stop process that is not running.
+    at /Users/bgroener/Development/Projects/Licht-Blau/lysboks/node_modules/grunt-forever/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:332:26
+    at process._tickCallback (node.js:419:13)

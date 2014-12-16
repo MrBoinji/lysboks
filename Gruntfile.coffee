@@ -1,3 +1,7 @@
+config =
+	debugAppPort: 5555
+	port: 7777
+
 module.exports = (grunt) ->
 
 	#Project configuration
@@ -11,22 +15,37 @@ module.exports = (grunt) ->
 		coffee:
 			default:
 				expand: true
-				cwd: 'src'
+				cwd: ''
 				src: ['**/*.coffee']
 				dest: 'build'
 				ext: '.js'
 
+		concurrent:
+			dev:
+				tasks: ['nodemon']
+				options:
+					logConcurrentOutput: true
+
 		copy:
 			default:
-				cwd: 'src'
-				src: ['libs/*.js']
+				cwd: ''
+				src: ['**/*.json', '**/*.html']
 				dest: 'build'
 				expand: true
 
-		execute:
-			target:
-				src: ['build/lysboks.js']
+		nodemon:
+			debug:
+				script: 'lysboks.coffee'
+				options:
+					env:
+						port: config.port
 
+		'node-inspector':
+			custom:
+				options:
+					'web-port': config.debugAppPort
+					'web-host': 'localhost'
+					'debug-port': config.port
 
 		uglify:
 			options:
@@ -36,22 +55,31 @@ module.exports = (grunt) ->
 				src: 'build/<%= pkg.name %>.js'
 				dest: 'build/<%= pkg.name %>.min.js'
 
-		watch:
-			coffee:
-				files: ['**/*.coffee']
-				tasks: ['coffee:build']
+#		watch:
+#			devChanges:
+#				files: ['**/*.coffee']
+#				tasks: ['concurrent:dev']
 
 	# These plugins provide necessary tasks.
+	grunt.loadNpmTasks 'grunt-concurrent'
 	grunt.loadNpmTasks 'grunt-contrib-clean'
 	grunt.loadNpmTasks 'grunt-contrib-coffee'
 	grunt.loadNpmTasks 'grunt-contrib-copy'
 	grunt.loadNpmTasks 'grunt-contrib-uglify'
 	grunt.loadNpmTasks 'grunt-contrib-watch'
-	grunt.loadNpmTasks 'grunt-execute';
+#	grunt.loadNpmTasks 'grunt-forever'
+	grunt.loadNpmTasks 'grunt-node-inspector'
+	grunt.loadNpmTasks 'grunt-nodemon'
+	grunt.loadNpmTasks 'grunt-services'
 
 	# Default task.
-	grunt.registerTask 'fastbuild' , ['coffee', 'copy']
-	grunt.registerTask 'build'     , ['clean','coffee', 'copy']
+	grunt.registerTask 'fastBuild' , ['coffee', 'copy']
+	grunt.registerTask 'build'     , ['clean', 'coffee', 'copy']
 	grunt.registerTask 'default'   , ['build']
-	grunt.registerTask 'lysboks'   , ['execute']
+	grunt.registerTask 'startDev'  , () ->
+		grunt.task.run ['startMongo', 'concurrent:dev']
+
+#	grunt.registerTask 'stopDev'   , ['forever:lysboks:stop', 'stopMongo']
+#	grunt.registerTask 'updateDev' , ['fastBuild', 'forever:lysboks:stop', 'forever:lysboks:start']
+
 

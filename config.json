@@ -1,0 +1,14 @@
+{
+	"title": "Test Site",
+	"port" : 7777,
+	"db"   : {
+		"production" : {
+			"host": "localhost",
+			"name": "lysboks"
+		},
+		"development" : {
+			"host": "localhost",
+			"name": "lysboksDev"
+		}
+	}
+}

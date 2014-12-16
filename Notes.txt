@@ -1,0 +1,10 @@
+Lysboks steps
+
+Step 1: Simple data REST server
+ - Base models
+ - Creation of dynamic models
+ - Complete REST functionality
+
+Step 2: Securitly layer for data
+
+Step 3: Pages etc ...
