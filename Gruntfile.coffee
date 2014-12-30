@@ -11,7 +11,6 @@ module.exports = (grunt) ->
 		clean:
 			default: ['./build/*']
 
-
 		coffee:
 			default:
 				expand: true
@@ -39,6 +38,10 @@ module.exports = (grunt) ->
 				options:
 					env:
 						port: config.port
+					ignore: [
+						'**/node_modules/**'
+						'**/bower_components/**'
+					]
 
 		'node-inspector':
 			custom:

@@ -10,16 +10,19 @@ module.exports = (grunt) ->
 			'* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
 			' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n'
 
+		bower:
+			target:
+				rjsConfig: 'js/config.js'
+
 		clean:
-			dist: ['dist/*']
-			tmp: ['.tmp/*']
+			default: ['./dist/*', './js/*']
 
 		coffee:
 			default:
 				expand: true
-				cwd: 'app'
+				cwd: 'coffee'
 				src: ['**/*.coffee']
-				dest: '.tmp/app'
+				dest: 'js'
 				ext: '.js'
 
 		concat:
@@ -28,12 +31,9 @@ module.exports = (grunt) ->
 				stripBanners: true
 
 			dist:
-				src : [
-					'bower_components/angular/angular.js'
-					'bower_components/jquery/jquery.js'
-					'.tmp/app/**/*.js'
-				]
-				dest: 'dist/admin.js'
+				src : ['bower_components/requirejs/require.js', 'js/admin.js' ]
+				dest: 'dist/js/admin.js'
+
 
 		copy:
 			default:
@@ -42,34 +42,27 @@ module.exports = (grunt) ->
 				dest: 'dist'
 				expand: true
 
-		html2js:
-			admin:
-				src: ['app/**/*.tpl.html'],
-				dest: '.tmp/app/templates.js'
-
-		ngAnnotate:
-			admin:
-				files: [
-					expand: true
-					cwd: "./.tmp/app"
-					src: ['**/*.js']
-					dest: './.tmp/app'
-					extDot: 'last'
-				]
+		requirejs:
+			compile:
+				options:
+					name          : 'config'
+					mainConfigFile: 'js/config.js'
+					out           : 'dist/js/admin.js'
+					optimize      : 'none'
+					findNestedDependencies: true
 
 		watch:
 			coffee:
 				files: ['**/*.coffee']
-				tasks: ['dev']
+				tasks: ['jsBuild']
 
+	grunt.loadNpmTasks 'grunt-bower-requirejs'
 	grunt.loadNpmTasks 'grunt-contrib-clean'
 	grunt.loadNpmTasks 'grunt-contrib-coffee'
 	grunt.loadNpmTasks 'grunt-contrib-concat'
 	grunt.loadNpmTasks 'grunt-contrib-copy'
+	grunt.loadNpmTasks 'grunt-contrib-requirejs'
 	grunt.loadNpmTasks 'grunt-contrib-watch'
-	grunt.loadNpmTasks 'grunt-html2js'
-	grunt.loadNpmTasks 'grunt-ng-annotate'
 
-
-	grunt.registerTask 'dev' , ['clean', 'coffee', 'ngAnnotate', 'html2js', 'concat', 'clean:tmp']
+	grunt.registerTask 'jsBuild' , ['coffee', 'bower', 'requirejs', 'concat']
 
